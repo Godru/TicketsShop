@@ -1,0 +1,39 @@
+<html>
+	<head></head>
+	<body>
+		<div class="container">
+		    <div id="tickets-shop">
+		    	<h1>Ваша оплата прошла успешно, ожидайте получение билета на электронную почту</h1>
+		    	<h3>Будьте внимательны! Письмо с билетом может автоматически оказаться в папке "СПАМ" вашей почты!</h3>
+		    	<h3>После нажатия на кнопку скачивание обычно начинается через 15-20 секунд. </h3>
+		    	<button id="action" onclick="downloadClick();" style="padding: 10px 25px; background: rgb(252, 30, 37); color: white; border: none; font-size: 20px;">Скачать билет</button>
+		    </div>
+		</div>
+
+		<script>
+			function downloadClick() {
+				setTimeout(requestDownload, 0);
+				
+			}
+
+			function requestDownload() {
+				let host = location.origin
+				let search = location.search.substring(1);
+				let params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+				console.log(params);
+				let req = host + '/nologin/srv/Baloon/PersonOrder/Download_FE?trxid=s:' + params.orderId + '&'
+				fetch(req)
+					.then(function(response) {
+				    		if(response.status == 200) {
+							window.location.assign(req);	
+						} else {
+							setTimeout(requestDownload, 10000);
+						}
+
+				    	return response.json();
+				   	})
+					.catch( );
+			}
+		</script>
+	</body>
+</html>

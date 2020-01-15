@@ -1,0 +1,94 @@
+<div class="container">
+    <div class="row">
+
+<div id="loginArea">
+    <h2>Вход в личный кабинет</h2>
+    <div id="login_error"><!-- --></div>
+    <form id="login-form">
+        <table class="login"><tbody>
+            <tr>
+                <td></td>
+                <td style="text-align: center; padding-bottom: 1em;">
+                <!--
+                    <a href="/en_US/index-en.html">Switch to English</a>
+                    -->
+                    <br />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="login_label">Email:</td>
+                <td><input id="login" type="text" tabindex="1"/></td>
+                <td class="login_tip"></td>
+            </tr>
+            <tr>
+                <td class="login_label">Пароль:</td>
+                <td><input id="password" type="password"  tabindex="2"/></td>
+                <td class="login_tip">пароль вводится с учётом регистра</td>
+            </tr>
+           <tr style="display: none;">
+                <td class="login_label">Язык:</td>
+                <td>
+                    <select id="language" tabindex="3">
+                        <option selected value="ru_RU">Русский</option>
+                        <option value="en_US">English</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td  class="login_button" nowrap="yes">
+                    <button id="login_button" type="submit"
+                            class="login_button"
+                            title=""
+                            tabIndex="4">Войти</button>
+                    <button id="register_button"
+                            type="reset"
+                            class="login_button"
+                            title="" tabIndex="5"
+                            onClick='location.href="/auth/register"'>Регистрация</button>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style ="text-align: center; padding-top: 1em;">
+                    <a href="/auth/restore-password.html">Забыли пароль?</a>
+                </td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<style>
+	#register_button{
+		padding: 1px 6px;
+		width: 105px;
+	}
+</style>
+ </div>
+</div>
+<script type="text/javascript" src="/assets/baloon-core.js"></script>
+<script type="text/javascript" src="/assets/login.js"></script>
+
+<script type="text/javascript" language="javascript">
+    document.getElementById('login').focus();
+
+    document.getElementById('login-form').onsubmit = function(e) {
+        var opts = {
+            login: document.getElementById('login').value,
+            password: document.getElementById('password').value,
+            language: document.getElementById('language').value,
+            skin: 'materio',
+            error: function(resp) {
+                var error = resp.ExceptionText;
+                if (error == 'Access denied. ') error = "Неверный логин или пароль.";
+                else if (error == 'Password required. ') error = "Введите пароль. ";
+                document.getElementById('login_error').innerHTML = error;
+            }
+        };
+        loginToPanel(opts);
+        return false;
+    }
+</script>
+

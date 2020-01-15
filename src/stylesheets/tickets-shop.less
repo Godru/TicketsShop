@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+
+.shop-layout {
+    width: 1028px;
+    margin: 0 auto;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	position: relative;
+
+
+	header{
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+    h1 {
+	    margin: 0 auto;
+	    width: max-content;
+		color: #5d8db9;
+    }
+
+    .back-button {
+		border-radius: 10px;
+		height: 30px;
+		width: 150px;
+	    border: 1px solid #ccc;
+	    background: #eee;
+		font-size: 20px;
+		margin-top: 20px;
+    }
+
+    .ticket-settings {
+	    display: flex;
+		justify-content: space-around;
+		width: 100%;
+
+		.ticket-date {
+			h2 {
+				margin: 20px auto;
+				width: max-content;
+			}
+		}
+
+		.ticket-rule {
+			position: relative;
+
+			text-align: center;
+			.select-container {
+				width: 250px;
+
+				.select-box {
+					background: #eee;
+					padding: 10px;
+					border-radius: 5px;
+					border: 1px solid #ddd;
+					cursor: pointer;
+					position: relative;
+
+					.label {
+						color: #333;
+					}
+
+					.arrow {
+						position: absolute;
+						right: 10px;
+						top: 17px;
+						background-color: #333;
+						display: inline-block;
+						border-left: 5px solid #eee;
+						border-top: 7px solid #333;
+						border-bottom: 5px solid #eee;
+						border-right: 5px solid #eee;
+					}
+				}
+
+				.select-options {
+
+					.options-list {
+						position: relative;
+
+						ul {
+							z-index: 1;
+						    list-style: none;
+							padding: 0;
+							background: #f0f0f0;
+							margin: -3px;
+							width: 100%;
+							position: absolute;
+							left: 3px;
+
+							li {
+								padding: 10px;
+								border-bottom: 1px solid #DDD;
+								border-left: 1px solid #ddd;
+								border-right: 1px solid #ddd;
+								cursor: pointer;
+							}
+							li:hover {
+								background-color: #ddd;
+							}
+						}
+					}
+				}
+
+			}
+		}
+
+
+		.ticket-count {
+			margin-left: 20px;
+			h4{
+				color: #5d8db9;
+			}
+			.counter {
+				display: flex;
+				width: 150px;
+				justify-content: space-around;
+				height: 50px;
+				background: #f0f0f0;
+				line-height: 50px;
+				margin: 0 auto;
+				border-radius: 10px;
+
+				.minus, .plus {
+					font-size: 25px;
+					cursor: pointer;
+					width: 50px;
+					height: 50px;
+					text-align: center;
+				}
+
+				.counter-value {
+					font-size: 25px;
+					background: #fafafa;
+					width: 50px;
+					height: 50px;
+					text-align: center;
+				}
+			}
+		}
+		.tariff-hint{
+			color: #5d8db9;
+			display: none;
+			font-size: 16px;
+			font-weight: bold;
+			z-index: 0;
+			position: absolute;
+			top: 115px;
+		}
+    }
+
+    .sessions-section {
+    	ul {
+			list-style: none;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: left;
+
+    		li {
+			    margin-right: 20px;
+			    padding: 20px;
+			    border: 2px solid #78d2ff;
+			    border-radius: 5px;
+			    box-sizing: border-box;
+			    cursor: pointer;
+
+    		}
+
+    		li:hover {
+    			border: 2px solid #0099e4;
+    		}
+
+    		li.selected {
+    			border: 2px solid #0099e4;
+    			background: #dcfaff;
+    		}
+    	}
+    }
+
+    .costs-label {
+		top: 250px;
+		right: 220px;
+		position: absolute;
+		font-family: "Times New Roman";
+		span{
+			font-weight: bold;
+		}
+    	ul {
+			list-style: none;
+    	}
+    }
+	.price-section{
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-around;
+		text-align: center;
+		margin-top: 100px;
+		.total-price{
+			margin-bottom: 20px;
+		}
+		p{
+			font-size: 13px;
+			font-family: "Times New Roman";
+			font-weight: bold;
+		}
+		.ticket-cost{
+			text-align: center;
+			display: flex;
+			flex-flow: column;
+			align-items: center;
+			margin-bottom: 30px;
+			p{
+				border-radius: 5px;
+				margin: 0;
+				padding: 13px;
+				width: 250px;
+				border: 1px solid #cccccc;
+				background-color: #eeeeee;
+			}
+		}
+		.promo-section{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			margin-bottom: 30px;
+			.promo-false{
+				color: red;
+			}
+			.promo-true{
+				color: green;
+			}
+			p{
+				bottom: 147px;
+				position: absolute;
+			}
+			input {
+				text-align: center;
+				margin-bottom: 40px;
+				width: 170px;
+				display: block;
+				height: 35px;
+				border-radius: 5px;
+				border-style: solid;
+				border-color: #ccc;
+				font-size: 15px;
+				background-color: white;
+			}
+			.check-button{
+				border-radius: 10px;
+				margin: 0 auto;
+				height: 26px;
+				width: 120px;
+				font-size: 16px;
+				color: black;
+				cursor: pointer;
+				border: 1px solid #cccccc;
+				background: #eeeeee;
+			}
+		}
+	}
+    .submit-section {
+    	display: flex;
+    	flex-direction: column;
+		justify-content: flex-end;
+		text-align: center;
+    	.purchase-button {
+			border-radius: 10px;
+    		margin: 0 auto;
+			height: 50px;
+			width: 270px;
+			font-size: 24px;
+			color: black;
+			cursor: pointer;
+			border: 1px solid #cccccc;
+		    background: #eeeeee;
+
+		    
+    	}
+    	.purchase-button:disabled {
+	    	background: #dddddd;
+			cursor: default;
+	    }
+		.total-price{
+			margin-bottom: 20px;
+		}
+		p{
+			font-size: 13px;
+			font-family: "Times New Roman";
+		}
+    }
+
+    .order-positions {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		margin: 20px 0;
+		p{
+			color: #5d8db9;
+			display: none;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		table {
+			width: 100%;
+			border: 1px solid #aaa;
+			border-collapse: collapse;
+
+			th {
+				border: 1px solid;
+				width: 200px;
+				background: #f0f0f0;
+			}
+
+			td {
+				border: 1px solid;
+				text-align: center;
+				height: 40px;
+			}
+		}
+    }
+
+    .form {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+	    margin: 20px 0 0;
+		text-align: center;
+	    input {
+			margin-top: 20px;
+			margin-bottom: 20px;
+			width: 300px;
+			display: block;
+			height: 40px;
+		    border-radius: 5px;
+		    border-style: solid;
+		    border-color: #ccc;
+		    font-size: 17px;
+		    background-color: white;
+	    }
+
+	    .email-note {
+	    	color: red;
+	    }
+    }
+
+    .order-result {
+    	height: 300px;
+    	color: #333;
+    	margin: 50px auto;
+    }
+}
+
+@media (max-width: 990px) {
+  .shop-layout {
+  	width: unset;
+  }
+	.costs-label{
+		position: static !important;
+	}
+  .ticket-settings {
+  	flex-direction: column;
+  	align-items: center;
+  }
+  .tariff-hint{
+	  right: auto !important;
+  }
+  .ticket-count{
+	  margin-top: 85px;
+  }
+  .date-picker {
+	margin-right: 20px;
+  	width: 350px;
+  }
+  .order-positions {
+  	width: 100%;
+  }
+}
+
+@media (max-width: 320px) {
+	
+	.order-positions {
+		width: 290px;
+	}
+}

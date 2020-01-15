@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="row">
+
+<div id="loginArea">
+    <h2 id="title">Регистрация в личном кабинете</h2>
+    <div id="login_error"><!-- --></div>
+    <form id="registration-form">
+        <table class="login"><tbody>
+            <tr><td colspan="3" id="login_error"><!-- --></td></tr>
+            <tr>
+                <td></td>
+                <td style="text-align: center; padding-bottom: 1em;">
+                <!--
+                    <a href="/en_US/index-en.html">Switch to English</a>
+                    -->
+                    <br />
+                </td>
+                <td></td>
+            </tr>
+           <!--<tr>
+                <td class="login_label">Номер карты:</td>
+                <td><input class = "inputbox" id="regcode" name="regcode" type="text" tabindex="1" required="true" /></td>
+                <td class="login_tip"></td>
+            </tr>-->
+            <tr>
+                <td class="login_label">Email:</td>
+                <td><input class = "inputbox" id="email" name="email" type="email" tabindex="2" required="true" /></td>
+                <td class="login_tip"></td>
+            </tr>
+            <tr>
+                <td class="login_label">Пароль:</td>
+                <td><input class = "inputbox" id="password" name="password" type="password"  tabindex="3" reqired="true" /></td>
+                <td class="login_tip">пароль вводится с учётом регистра</td>
+            </tr>
+            <tr>
+                <td class="login_label">Пароль повторно:</td>
+                <td><input class = "inputbox" id="password2" name="password2" type="password"  tabindex="4" required="true" /></td>
+                <td class="login_tip">пароли должны совпадать</td>
+            <tr>
+                <td></td>
+                <td  class="login_button" nowrap="yes">
+                    <button id="register_button" type="submit" class="login_button" title="" tabIndex="5">Зарегистрироваться</button>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align: center; padding-top: 1em;">
+                    <a href="/auth/login.html">Вход в систему</a>
+                </td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <div id="registration-result" style="display: none;">
+        <h2>Регистрация завершена</h2>
+        <div class="modal-body" id="success-modal-body">
+        Регистрация успешно завершена. Перейдите по ссылке на <a href="/auth/login.html">логин страницу</a> и войдите в систему для продолжения работы.
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<style>
+    .login_button{
+        padding: 2px 5px 4px;
+        height: 35px;
+    }
+</style>
+<script src="/assets/baloon-core.js"></script>
+<script src="/assets/login.js"></script>
+
+<script type="text/javascript">
+//document.getElementById('regcode').focus();
+
+document.getElementById('registration-form').onsubmit = function(e) {
+    var opts = {
+        data: {
+          //  regcode: document.getElementById('regcode').value,
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value,
+            password2: document.getElementById('password2').value,
+        },
+        success: function(resp) {
+            document.getElementById('registration-form').style.display = 'none';
+            document.getElementById('login_error').style.display = 'none';
+            document.getElementById('title').style.display = 'none';
+            document.getElementById('registration-result').style.display = 'block';
+        },
+        error: function(resp) {
+            var error = resp.ExceptionText;
+            if (error == 'Access denied. ') error = "Неверный логин или пароль.";
+            else if (error == 'Password required. ') error = "Введите пароль. ";
+            document.getElementById('login_error').innerHTML = error;
+        }
+    };
+    registerUser(opts);
+    return false;
+}
+</script>
+
+</html>
